@@ -2,9 +2,9 @@
 import sys
 import train
 import predict
-import evaluate
+import utils
 
 if __name__ == "__main__":
-    # evaluate.run()
     # train.run()
     predict.run()
+    # utils.run()

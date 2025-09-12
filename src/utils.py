@@ -48,7 +48,7 @@ def load_test_data(path='data/test.csv'):
     return X_predict
 
 def one_hot(Y):
-    one_hot_Y = np.zeros((Y.size, Y.max() + 1))
+    one_hot_Y = np.zeros((Y.size, 10))
     one_hot_Y[np.arange(Y.size), Y] = 1
     return one_hot_Y.T
 
@@ -60,7 +60,7 @@ def get_accuracy(A2, Y):
     return np.mean(get_predictions(A2) == Y)
 
 def evaluate_model(W1, b1, W2, b2, X_val, Y_val):
-    _, _, _, A2 = forward_prop(X_val, W1, b1, W2, b2)
+    _, _, _, A2, _ = forward_prop(X_val, W1, b1, W2, b2, training=False)
     predictions = get_predictions(A2)
     return np.mean(predictions == Y_val)
 
@@ -71,6 +71,7 @@ def check_balanced(Y):
     plt.ylabel("Number of samples")
     plt.title("Class distribution")
     plt.show()
+
     
 def run():
     _, Y_train, _, Y_val, _, _ = load_train_data()

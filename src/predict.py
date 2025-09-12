@@ -9,7 +9,7 @@ def run():
 
     # Load dev data just to test
     X_test = load_test_data()
-    _, _, _, A2 = forward_prop(X_test, W1, b1, W2, b2)
+    _, _, _, A2, _ = forward_prop(X_test, W1, b1, W2, b2, training=False)
     
     # Write to a submission.csv file answers
     preds = get_predictions(A2)
